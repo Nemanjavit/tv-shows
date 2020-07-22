@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "email": "asad@asdsa.com",
+      "password": "$2a$10$wQDfZ3B6bqIZuz5MphBb5Ol0ajT9b/oRemJxoiPSvRholOAJV42VS",
+      "username": "sada",
+      "id": 1
+    },
+    {
+      "email": "asd@asds.com",
+      "password": "$2a$10$PoWkf8iwF7k5dMavrRA2LO3Mfm3.ivcBeItS/W.ZBsjl0zjEA2PVS",
+      "username": "sadsss",
+      "id": 2
+    },
+    {
+      "email": "Marko@gmail.com",
+      "password": "$2a$10$7iaM2R8al/2qwr3otetcl.CB99H87ac2EFNnZp2RxcJ.LjLC/axrW",
+      "username": "Marko",
+      "id": 3
+    }
+  ]
+}
