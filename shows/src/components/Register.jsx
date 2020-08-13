@@ -1,10 +1,16 @@
 import React, { useState } from "react";
-import "../css/Register.css";
 import { Form, Container, Col, Button } from "react-bootstrap";
 import { registerUser } from "./http-requestes";
+import { useHistory } from "react-router-dom";
 
 const Register = () => {
-	const [user, setUser] = useState({ username: "", password: "", email: "" });
+	const [user, setUser] = useState({
+		email: "",
+		password: "",
+		username: "",
+		shows: [],
+	});
+	let history = useHistory();
 
 	const updateField = (e) => {
 		setUser({
@@ -17,6 +23,7 @@ const Register = () => {
 		console.log(user);
 		registerUser(user).then((res) => {
 			console.log(res.data);
+			history.push("/login");
 		});
 	};
 	return (

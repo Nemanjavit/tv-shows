@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Container, Form, Button, Col } from "react-bootstrap";
 import { loginUser } from "./http-requestes";
-import "../css/Login.css";
 import { useHistory } from "react-router-dom";
 
 const Login = () => {

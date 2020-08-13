@@ -1,0 +1,38 @@
+.cover-img {
+	width: 100%;
+}
+.genres {
+	font-size: 15px;
+	margin: 0 5px;
+}
+.list-of-seasons {
+	list-style-type: none;
+	li {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		img {
+			width: 20%;
+		}
+	}
+}
+.summary {
+	text-align: justify;
+}
+.sub-nav {
+	margin: 10px 0;
+	display: flex;
+	justify-content: flex-start;
+	a {
+		padding: 10px;
+		text-decoration: none;
+		color: $light-grey;
+		&:hover {
+			background-color: $primary-green;
+		}
+	}
+	.active {
+		background-color: $light-black;
+		color: $myWhite;
+	}
+}

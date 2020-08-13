@@ -1,0 +1,161 @@
+nav form {
+  border: none;
+  padding: 5px;
+}
+
+.navbar-nav {
+  align-items: baseline;
+}
+
+nav a {
+  color: white;
+}
+
+.navbar-brand {
+  color: white !important;
+}
+
+.center {
+  display: block;
+  margin: 0 auto;
+}
+
+form {
+  padding: 20px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+}
+
+.center {
+  display: block;
+  margin: 0 auto;
+}
+
+form {
+  padding: 20px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+}
+
+.cover-img {
+  width: 100%;
+}
+
+.genres {
+  font-size: 15px;
+  margin: 0 5px;
+}
+
+.list-of-seasons {
+  list-style-type: none;
+}
+
+.list-of-seasons li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-of-seasons li img {
+  width: 20%;
+}
+
+.summary {
+  text-align: justify;
+}
+
+.sub-nav {
+  margin: 10px 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sub-nav a {
+  padding: 10px;
+  text-decoration: none;
+  color: #9595b0;
+}
+
+.sub-nav a:hover {
+  background-color: #3c948b;
+}
+
+.sub-nav .active {
+  background-color: #3f3f3f;
+  color: #fefefe;
+}
+
+.cast-card a {
+  color: #3f3f3f;
+}
+
+.cast-card img {
+  width: 100%;
+}
+
+.cast-card .actor-name {
+  display: block;
+}
+
+.table-header {
+  color: #fefefe;
+  background-color: #3c948b;
+}
+
+.card-body {
+  background-color: #3c948b;
+  color: #fefefe;
+}
+
+.button-holder {
+  position: relative;
+}
+
+.favorites-button {
+  display: block;
+  margin: 0 auto;
+  border: none;
+  background-color: #3c948b;
+  color: #fefefe;
+  width: 30%;
+  transition: font-size 0.3s linear;
+}
+
+.favorites-button svg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.card-subtitle {
+  font-size: 1.2rem;
+}
+
+.favorites-button:hover {
+  font-size: 2rem;
+}
+
+a:hover {
+  text-decoration: none;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,29 @@
+.card-body {
+	background-color: $primary-green;
+	color: $myWhite;
+	// transition: padding-bottom 0.2s linear;
+}
+.button-holder {
+	position: relative;
+}
+.favorites-button {
+	display: block;
+	margin: 0 auto;
+	border: none;
+	background-color: $primary-green;
+	color: $myWhite;
+	width: 30%;
+	transition: font-size 0.3s linear;
+	svg {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+
+.card-subtitle {
+	font-size: 1.2rem;
+}
+.favorites-button:hover {
+	font-size: 2rem;
+}
