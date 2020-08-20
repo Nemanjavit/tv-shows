@@ -10,6 +10,7 @@ import { Container, Row } from "react-bootstrap";
 import { SearchContext } from "./helper/SearchContext";
 import { Col } from "react-bootstrap";
 import { userId } from "./helper/getToken";
+import { useRouteMatch } from "react-router-dom";
 
 const ShowsPage = () => {
 	const [shows, setShows] = useState([]);
@@ -20,6 +21,7 @@ const ShowsPage = () => {
 
 	useEffect(() => {
 		getShows().then((res) => {
+			console.log(res);
 			setShows(res.data);
 		});
 		searchShows(query).then((res) => {
@@ -46,12 +48,15 @@ const ShowsPage = () => {
 			console.log(res.data);
 		});
 	};
-
+	console.log(searchedShow);
 	const displayShows = () => {
 		if (searchedShow.length > 0) {
 			return searchedShow.map((show) => (
 				<Col sm={4} className="my-2 " key={show.show.id}>
-					<ShowCard data={show.show} />
+					<ShowCard
+						setFavoriteHandler={(e) => setFavoriteHandler(show, e)}
+						data={show.show}
+					/>
 				</Col>
 			));
 		}

@@ -27,3 +27,11 @@
 .favorites-button:hover {
 	font-size: 2rem;
 }
+
+.card {
+	border: none;
+	transition: padding 200ms linear;
+}
+.card:hover {
+	padding: 2px;
+}

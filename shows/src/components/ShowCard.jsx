@@ -8,15 +8,17 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 const ShowCard = ({ data, setFavoriteHandler }) => {
 	const heart = <FontAwesomeIcon icon={faHeart} />;
 	const star = <FontAwesomeIcon icon={faStar} />;
-	console.log(data);
+
 	return (
 		<>
 			<Link to={`/shows/${data.id}/main`}>
 				<Card style={{ width: "100%" }} className="h-100">
-					<Card.Img
-						variant="top"
-						src={`${data.image.medium}?${data.image.medium}:${data.image.original}`}
-					/>
+					{data.image ? (
+						<Card.Img variant="top" src={data.image.medium} />
+					) : (
+						<Card.Img variant="top" src="https://dummyimage.com/348x488" />
+					)}
+
 					<Card.Body>
 						<Card.Title className="text-center">{data.name}</Card.Title>
 						<Row className="card-subtitle">

@@ -1,35 +1,41 @@
 import React, { useEffect, useState, useContext } from "react";
-import {
-	Navbar,
-	Nav,
-	Container,
-	Form,
-	FormControl,
-	Button,
-} from "react-bootstrap";
+import { Navbar, Nav, Container, FormControl } from "react-bootstrap";
 import { getToken } from "./helper/getToken";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import { SearchContext } from "./helper/SearchContext";
 
 const Navigation = () => {
-	let token = "";
-	const [isLogged, setisLogged] = useState(false);
 	const { query, setQuery } = useContext(SearchContext);
 	const [search, setSearch] = useState("");
+	const [token, setToken] = useState("");
+
+	let location = useLocation();
+	let history = useHistory();
 
 	useEffect(() => {
-		let token = getToken();
-		if (token !== "") {
-			setisLogged(true);
+		const tokenString = getToken();
+		if (tokenString !== "") {
+			setToken(tokenString);
 		}
-	}, [token]);
+	}, [location.pathname]);
 
-	const submitHandler = (e) => {
-		e.preventDefault();
-		setQuery(search);
+	const inputChange = (e) => {
+		setQuery(e.target.value);
+		history.push("/shows");
 	};
+
+	const logOut = () => {
+		localStorage.removeItem("token");
+	};
+	// const navHidden = () => {
+	// 	if (location.pathname !== "/" && location.pathname !== "/login") {
+	// 		setHidden(() => setHidden(false));
+	// 		console.log("hey");
+	// 	}
+	// };
+
 	return (
-		<Navbar bg="dark" expand="lg">
+		<Navbar expand="lg">
 			<Container>
 				<Navbar.Brand href="/" className="logo-text">
 					TV-Shows
@@ -37,19 +43,15 @@ const Navigation = () => {
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ml-auto">
-						<Form inline onSubmit={submitHandler}>
-							<FormControl
-								type="text"
-								name="search"
-								placeholder="Search"
-								className="mr-sm-2 search-bar"
-								value={search}
-								onChange={(e) => setSearch(e.target.value)}
-							/>
-							<Button type="submit" variant="outline-success">
-								Search
-							</Button>
-						</Form>
+						<FormControl
+							type="text"
+							name="search"
+							placeholder="Search"
+							className="mr-sm-2 search-bar"
+							value={query}
+							onChange={inputChange}
+						/>
+
 						<Link
 							onClick={(e) => setQuery("")}
 							className="mx-2 link"
@@ -58,8 +60,15 @@ const Navigation = () => {
 							Shows
 						</Link>
 
-						{isLogged ? (
-							<Link to="/favorites">Favorite</Link>
+						{token ? (
+							<>
+								<Link className="mx-2" to="/favorites">
+									Favorite
+								</Link>
+								<Link to="/" onClick={logOut}>
+									Log Out
+								</Link>
+							</>
 						) : (
 							<Link to="/login">Log in</Link>
 						)}

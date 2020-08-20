@@ -7,7 +7,7 @@ import { Row } from "react-bootstrap";
 const Cast = () => {
 	const params = useParams();
 	const [cast, setCast] = useState([]);
-	// console.log(cast);
+	console.log(`cast params ${params.id}`);
 	useEffect(() => {
 		getCast(params.id).then((res) => {
 			setCast(res.data);

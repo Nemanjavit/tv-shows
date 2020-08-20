@@ -1,4 +1,5 @@
 nav {
+	background-color: $light-black;
 	form {
 		border: none;
 		padding: 5px;
@@ -9,7 +10,11 @@ nav {
 }
 nav a {
 	color: white;
+	white-space: nowrap;
+	&:hover {
+		color: $myWhite;
+	}
 }
 .navbar-brand {
-	color: white !important;
+	color: $myWhite !important;
 }

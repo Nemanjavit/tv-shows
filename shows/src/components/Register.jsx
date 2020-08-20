@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Form, Container, Col, Button } from "react-bootstrap";
+import { Form, Col, Button, Row } from "react-bootstrap";
 import { registerUser } from "./http-requestes";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 const Register = () => {
 	const [user, setUser] = useState({
@@ -27,48 +27,66 @@ const Register = () => {
 		});
 	};
 	return (
-		<Container>
-			<Col sm={6} className="center">
-				<Form onSubmit={submitHandler}>
-					<Form.Group controlId="formBasicUsername">
+		<div className="reg-page full-height">
+			<Col sm={3}>
+				<Form onSubmit={submitHandler} className="register-form">
+					<h2 className="register-form-heading text-center py-1">Sign Up</h2>
+					<Form.Group
+						bsPrefix="form-group register-form-group"
+						controlId="formBasicUsername"
+					>
 						<Form.Label>Username</Form.Label>
 						<Form.Control
+							bsPrefix="form-control register-form-control"
+							autoComplete="off"
 							type="text"
 							name="username"
-							placeholder="Username"
 							value={user.username}
 							onChange={updateField}
 						/>
 					</Form.Group>
-					<Form.Group controlId="formBasicPassword">
+					<Form.Group
+						bsPrefix="form-group register-form-group"
+						controlId="formBasicPassword"
+					>
 						<Form.Label>Password</Form.Label>
 						<Form.Control
 							type="password"
 							name="password"
+							autoComplete="off"
 							onChange={updateField}
-							placeholder="Password"
 							value={user.password}
+							bsPrefix="form-control register-form-control"
 						/>
 					</Form.Group>
-					<Form.Group controlId="formBasicEmail">
+					<Form.Group
+						bsPrefix="form-group register-form-group"
+						controlId="formBasicEmail"
+					>
 						<Form.Label>Email address</Form.Label>
 						<Form.Control
+							bsPrefix="form-control register-form-control"
 							type="email"
 							name="email"
+							autoComplete="off"
 							onChange={updateField}
-							placeholder="Enter email"
 							value={user.email}
 						/>
-						<Form.Text className="text-muted">
-							We'll never share your email with anyone else.
-						</Form.Text>
 					</Form.Group>
-					<Button variant="outline-secondary button" type="submit" size="lg">
+					<Link className="my-3 d-block" to="/login">
+						Already have an account? Sign in
+					</Link>
+
+					<Button
+						variant="outline-secondary button register-button"
+						type="submit"
+						size="lg"
+					>
 						Register
 					</Button>
 				</Form>
 			</Col>
-		</Container>
+		</div>
 	);
 };
 export default Register;

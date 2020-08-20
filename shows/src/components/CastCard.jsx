@@ -1,9 +1,7 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 const CastCard = ({ data }) => {
-	console.log(data);
 	return (
 		<Col className="cast-card py-3" sm={6}>
 			<Row>
@@ -11,9 +9,9 @@ const CastCard = ({ data }) => {
 					<img src={data.person.image.medium} alt="actor" />
 				</Col>
 				<Col sm={8}>
-					<Link className="actor-name">{data.person.name}</Link>
+					<span className="actor-name">{data.person.name}</span>
 					<span>as</span>
-					<Link className="mx-2">{data.character.name}</Link>
+					<span className="mx-2">{data.character.name}</span>
 				</Col>
 			</Row>
 		</Col>

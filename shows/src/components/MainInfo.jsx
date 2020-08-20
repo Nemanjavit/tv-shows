@@ -15,17 +15,15 @@ const MainInfo = () => {
 	});
 	const [creator, setCreator] = useState([]);
 	const params = useParams();
-	console.log(creator);
+	console.log(`main-info params: ${params.id}`);
 	useEffect(() => {
 		getSingleShow(params.id).then((res) => {
 			setShow(res.data);
-			console.log("first api call");
 		});
 		getCrew(params.id).then((res) => {
 			const crew = res.data;
 			const result = crew.filter((crew) => crew.type === "Creator");
 			setCreator(result);
-			console.log(result);
 		});
 	}, [params.id]);
 

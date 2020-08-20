@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./css/main.css";
-import Home from "./components/Home";
 import Login from "./components/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Register from "./components/Register";
@@ -17,13 +16,12 @@ function App() {
 
 	return (
 		<Router>
+			<Route path="/" exact component={Register} />
+			<Route path="/login" component={Login} />
 			<div className="App">
 				<SearchContext.Provider value={{ query, setQuery }}>
 					<Navigation />
 					<Switch>
-						<Route path="/" exact component={Home} />
-						<Route path="/register" component={Register} />
-						<Route path="/login" component={Login} />
 						<ProtectedRoute path="/shows" exact component={ShowsPage} />
 						<ProtectedRoute path="/shows/:id" component={SingleShow} />
 						<ProtectedRoute path="/favorites" component={FavoritesPage} />

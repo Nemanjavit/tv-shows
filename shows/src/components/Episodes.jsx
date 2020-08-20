@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { getEpisodes, getSeasons } from "./http-requestes";
 import { Table } from "react-bootstrap";
 
@@ -7,7 +7,9 @@ const Episodes = () => {
 	const [episodes, setEpisodes] = useState([]);
 	const [seasons, setSeasons] = useState([]);
 	let params = useParams();
-	console.log(episodes);
+	let location = useLocation();
+	console.log(`episode params: ${params.id}`);
+
 	useEffect(() => {
 		getEpisodes(params.id).then((res) => {
 			setEpisodes(res.data);
@@ -15,7 +17,7 @@ const Episodes = () => {
 		getSeasons(params.id).then((res) => {
 			setSeasons(res.data);
 		});
-	}, [params.id]);
+	}, [params.id, location]);
 
 	return (
 		<>

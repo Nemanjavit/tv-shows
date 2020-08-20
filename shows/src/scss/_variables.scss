@@ -1,4 +1,22 @@
 $primary-green: #3c948b;
+$secondary-green: #53c5b9;
+$light-green: #63d5c3;
 $light-black: #3f3f3f;
+$dark-black: #3b3e52;
 $myWhite: #fefefe;
 $light-grey: rgb(149, 149, 176);
+$dark-red: #a24b61;
+$light-red: #d77584;
+$ultra-light-green: #d2efeb;
+$myBlue: #0779e4;
+
+// background
+$background-red: (
+	rgb(215, 117, 132)
+		linear-gradient(
+			157deg,
+			rgba(215, 117, 132, 1) 36%,
+			rgba(162, 75, 97, 1) 65%
+		)
+);
+// register button
