@@ -3,6 +3,7 @@ import { Container, Col, Row } from "react-bootstrap";
 import { getUserInfo } from "./http-requestes";
 import ShowCard from "./ShowCard";
 import { userId } from "./helper/getToken";
+import { Scrollbars } from "react-custom-scrollbars";
 
 const FavoritesPage = () => {
 	const [usersFavorite, setUsersFavorite] = useState([]);
@@ -16,15 +17,17 @@ const FavoritesPage = () => {
 	}, []);
 
 	return (
-		<Container>
-			<Row>
-				{usersFavorite.map((show) => (
-					<Col className="my-2" sm={4} key={show.id}>
-						<ShowCard data={show} />
-					</Col>
-				))}
-			</Row>
-		</Container>
+		<Scrollbars style={{ width: "100%", height: "95vh" }}>
+			<Container>
+				<Row>
+					{usersFavorite.map((show) => (
+						<Col className="my-2" sm={4} key={show.id}>
+							<ShowCard data={show} />
+						</Col>
+					))}
+				</Row>
+			</Container>
+		</Scrollbars>
 	);
 };
 

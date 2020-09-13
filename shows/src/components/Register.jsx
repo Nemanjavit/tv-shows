@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { Form, Col, Button, Row } from "react-bootstrap";
 import { registerUser } from "./http-requestes";
-import { useHistory, Link } from "react-router-dom";
+import { Alert } from "react-bootstrap";
+import classNames from "classnames";
+import styles from "../scss/Register.module.scss";
 
-const Register = () => {
+const Register = (props, handleSucces) => {
 	const [user, setUser] = useState({
 		email: "",
 		password: "",
 		username: "",
 		shows: [],
 	});
-	let history = useHistory();
+	const [showalert, setShowalert] = useState(false);
 
 	const updateField = (e) => {
 		setUser({
@@ -18,75 +19,87 @@ const Register = () => {
 			[e.target.name]: e.target.value,
 		});
 	};
+
+	const errorHandler = () => {
+		return <p className="text-white">Registration failed!</p>;
+	};
 	const submitHandler = (e) => {
 		e.preventDefault();
-		console.log(user);
-		registerUser(user).then((res) => {
-			console.log(res.data);
-			history.push("/login");
-		});
+		// opening log in form if register is success
+		registerUser(user)
+			.then((res) => {
+				props.handleSucces();
+				// clearing fields
+				setUser({
+					email: "",
+					password: "",
+					username: "",
+				});
+			})
+			.catch((err) => {
+				setShowalert(true);
+				console.log(err, "this is error log");
+			});
 	};
-	return (
-		<div className="reg-page full-height">
-			<Col sm={3}>
-				<Form onSubmit={submitHandler} className="register-form">
-					<h2 className="register-form-heading text-center py-1">Sign Up</h2>
-					<Form.Group
-						bsPrefix="form-group register-form-group"
-						controlId="formBasicUsername"
-					>
-						<Form.Label>Username</Form.Label>
-						<Form.Control
-							bsPrefix="form-control register-form-control"
-							autoComplete="off"
-							type="text"
-							name="username"
-							value={user.username}
-							onChange={updateField}
-						/>
-					</Form.Group>
-					<Form.Group
-						bsPrefix="form-group register-form-group"
-						controlId="formBasicPassword"
-					>
-						<Form.Label>Password</Form.Label>
-						<Form.Control
-							type="password"
-							name="password"
-							autoComplete="off"
-							onChange={updateField}
-							value={user.password}
-							bsPrefix="form-control register-form-control"
-						/>
-					</Form.Group>
-					<Form.Group
-						bsPrefix="form-group register-form-group"
-						controlId="formBasicEmail"
-					>
-						<Form.Label>Email address</Form.Label>
-						<Form.Control
-							bsPrefix="form-control register-form-control"
-							type="email"
-							name="email"
-							autoComplete="off"
-							onChange={updateField}
-							value={user.email}
-						/>
-					</Form.Group>
-					<Link className="my-3 d-block" to="/login">
-						Already have an account? Sign in
-					</Link>
 
-					<Button
-						variant="outline-secondary button register-button"
-						type="submit"
-						size="lg"
-					>
-						Register
-					</Button>
-				</Form>
-			</Col>
-		</div>
+	// register button styles
+	const regbtnStyle = classNames({
+		"my-5": true,
+		[`${styles.register_button}`]: true,
+	});
+	return (
+		<>
+			<form onSubmit={submitHandler} className={styles.register_form}>
+				{showalert ? errorHandler() : null}
+				<h2 className={styles.form_heading}>Sign Up</h2>
+				<div className={styles.input_group}>
+					<label htmlFor="username" className={styles.form_label}>
+						Username
+					</label>
+					<input
+						id="username"
+						className={styles.input}
+						autoComplete="off"
+						type="text"
+						name="username"
+						value={user.username}
+						onChange={updateField}
+					/>
+				</div>
+				<div className={styles.input_group}>
+					<label htmlFor="password" className={styles.form_label}>
+						Password
+					</label>
+					<input
+						id="password"
+						type="password"
+						name="password"
+						autoComplete="off"
+						onChange={updateField}
+						value={user.password}
+						className={styles.input}
+					/>
+				</div>
+				<div className={styles.input_group}>
+					<label className={styles.form_label} htmlFor="email">
+						Email address
+					</label>
+					<input
+						id="email"
+						className={styles.input}
+						type="email"
+						name="email"
+						autoComplete="off"
+						onChange={updateField}
+						value={user.email}
+					/>
+				</div>
+
+				<button className={regbtnStyle} type="submit">
+					Register
+				</button>
+			</form>
+		</>
 	);
 };
 export default Register;

@@ -3,6 +3,8 @@ import { Navbar, Nav, Container, FormControl } from "react-bootstrap";
 import { getToken } from "./helper/getToken";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import { SearchContext } from "./helper/SearchContext";
+import styles from "../scss/Nav.module.scss";
+import classNames from "classnames";
 
 const Navigation = () => {
 	const { query, setQuery } = useContext(SearchContext);
@@ -27,34 +29,39 @@ const Navigation = () => {
 	const logOut = () => {
 		localStorage.removeItem("token");
 	};
-	// const navHidden = () => {
-	// 	if (location.pathname !== "/" && location.pathname !== "/login") {
-	// 		setHidden(() => setHidden(false));
-	// 		console.log("hey");
-	// 	}
-	// };
+
+	const headerClasses = classNames({
+		"d-none": location.pathname === "/",
+		[`${styles.header}`]: true,
+	});
+	const linkStyles = classNames("mx-2", { [`${styles.link}`]: true });
+	const navClasses = classNames({ [`${styles.nav}`]: true });
+	const searchfldClasses = classNames({
+		[`${styles.search_field}`]: true,
+		"mr-sm-2": true,
+	});
 
 	return (
-		<Navbar expand="lg">
-			<Container>
-				<Navbar.Brand href="/" className="logo-text">
-					TV-Shows
-				</Navbar.Brand>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" />
-				<Navbar.Collapse id="basic-navbar-nav">
-					<Nav className="ml-auto">
-						<FormControl
+		<header className={headerClasses}>
+			<div className="container">
+				<nav className={navClasses}>
+					<a href="/" className="text-white">
+						TV-Shows
+					</a>
+
+					<div className={styles.navigation} id="basic-navbar-nav">
+						<input
 							type="text"
 							name="search"
 							placeholder="Search"
-							className="mr-sm-2 search-bar"
+							className={searchfldClasses}
 							value={query}
 							onChange={inputChange}
 						/>
 
 						<Link
 							onClick={(e) => setQuery("")}
-							className="mx-2 link"
+							className={linkStyles}
 							to="/shows"
 						>
 							Shows
@@ -62,20 +69,20 @@ const Navigation = () => {
 
 						{token ? (
 							<>
-								<Link className="mx-2" to="/favorites">
+								<Link className={linkStyles} to="/favorites">
 									Favorite
 								</Link>
-								<Link to="/" onClick={logOut}>
+								<Link className={linkStyles} to="/" onClick={logOut}>
 									Log Out
 								</Link>
 							</>
 						) : (
 							<Link to="/login">Log in</Link>
 						)}
-					</Nav>
-				</Navbar.Collapse>
-			</Container>
-		</Navbar>
+					</div>
+				</nav>
+			</div>
+		</header>
 	);
 };
 export default Navigation;

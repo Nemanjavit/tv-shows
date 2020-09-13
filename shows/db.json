@@ -345,6 +345,34 @@
         }
       ],
       "id": 1
+    },
+    {
+      "email": "iva@nsam.com",
+      "password": "$2a$10$TLdnm.TuO0St9olR8NzzxOi/S2KdMUn7O90wx7Gkq50iOn8z4V26O",
+      "username": "ivan",
+      "shows": [],
+      "id": 2
+    },
+    {
+      "email": "asda@sd.com",
+      "password": "$2a$10$oIPUMssuGnIWjrVsPk.lJO8RAyWh.gv8H2K9P.lvV71liijH9Xk9m",
+      "username": "sad",
+      "shows": [],
+      "id": 3
+    },
+    {
+      "email": "sad@gmail.com",
+      "password": "$2a$10$w5t/qPacPC6or02fcFlKT.vcen5eIg9BFaXiKmTQ6TV.P6Rl/heSa",
+      "username": "sadsad",
+      "shows": [],
+      "id": 4
+    },
+    {
+      "email": "sadsada@sdada.com",
+      "password": "$2a$10$94YFRho6V928QGaBvoqkMOk98PiZxL5vOoKjUgqhxT60jiJMDqZ/i",
+      "username": "sadsad",
+      "shows": [],
+      "id": 5
     }
   ]
 }

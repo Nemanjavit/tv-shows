@@ -27,6 +27,7 @@ export const getUserInfo = (id) => {
 export const getShows = () => {
 	return axios.get("http://api.tvmaze.com/shows");
 };
+
 // get single show
 export const getSingleShow = (id) => {
 	return axios.get(`http://api.tvmaze.com/shows/${id}?embed[]=seasons`);

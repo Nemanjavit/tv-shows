@@ -1,0 +1,33 @@
+@import "./variables";
+.header {
+	background-color: $light-black;
+}
+.nav {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+	align-items: baseline;
+}
+.search_field {
+	border-radius: 5px;
+	height: 2.1rem;
+	border: none;
+	padding: 0 7px;
+	&:focus {
+		outline: none;
+	}
+}
+// .navigation {
+// 	width: 80%;
+// }
+
+.navbar {
+	align-items: baseline;
+}
+.link {
+	color: white;
+	white-space: nowrap;
+	&:hover {
+		color: $myWhite;
+	}
+}

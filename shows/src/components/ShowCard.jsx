@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import classNames from "classnames";
+import styles from "../scss/ShowCard.module.scss";
 
 const ShowCard = ({ data, setFavoriteHandler }) => {
 	const heart = <FontAwesomeIcon icon={faHeart} />;
@@ -12,19 +14,21 @@ const ShowCard = ({ data, setFavoriteHandler }) => {
 	return (
 		<>
 			<Link to={`/shows/${data.id}/main`}>
-				<Card style={{ width: "100%" }} className="h-100">
-					{data.image ? (
-						<Card.Img variant="top" src={data.image.medium} />
-					) : (
-						<Card.Img variant="top" src="https://dummyimage.com/348x488" />
-					)}
+				<Card style={{ width: "100%" }} className={`${styles.card}`}>
+					<div className={`${styles.cardImg}`}>
+						{data.image ? (
+							<img className="w-100" src={data.image.medium} />
+						) : (
+							<img className="w-100" src="https://dummyimage.com/348x488" />
+						)}
+					</div>
 
-					<Card.Body>
+					<div className={`${styles.card_body}`}>
 						<Card.Title className="text-center">{data.name}</Card.Title>
-						<Row className="card-subtitle">
-							<Col sm={6} className="button-holder">
+						<Row className={`${styles.card_subtitle}`}>
+							<Col sm={6} className={`${styles.button_holder}`}>
 								<button
-									className="favorites-button"
+									className={`${styles.favorites_button}`}
 									onClick={setFavoriteHandler}
 								>
 									{heart}
@@ -37,7 +41,7 @@ const ShowCard = ({ data, setFavoriteHandler }) => {
 								</div>
 							</Col>
 						</Row>
-					</Card.Body>
+					</div>
 				</Card>
 			</Link>
 		</>

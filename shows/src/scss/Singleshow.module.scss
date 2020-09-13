@@ -1,0 +1,24 @@
+@import "./variables";
+
+.sub_nav {
+	margin: 10px 0;
+	display: flex;
+	justify-content: flex-start;
+}
+.navlink {
+	padding: 10px;
+	text-decoration: none;
+	color: $light-grey;
+	&:hover {
+		background-color: $primary-green;
+		color: $myWhite;
+	}
+	&:active {
+		background-color: $light-black;
+		color: $myWhite;
+	}
+}
+// .active {
+// 	background-color: $light-black;
+// 	color: $myWhite;
+// }

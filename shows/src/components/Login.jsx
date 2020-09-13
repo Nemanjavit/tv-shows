@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Container, Form, Button, Col, Row } from "react-bootstrap";
+import styles from "../scss/Register.module.scss";
 import { loginUser } from "./http-requestes";
 import { useHistory } from "react-router-dom";
+import classNames from "classnames";
 
 const Login = () => {
 	const [login, setLogin] = useState({ email: "", password: "" });
@@ -23,49 +24,51 @@ const Login = () => {
 			history.push("/shows");
 		});
 	};
+
+	// styles
+	const formStyles = classNames({
+		[`${styles.register_form}`]: true,
+		[`${styles.orange}`]: true,
+	});
+	const loginButton = classNames({
+		[`${styles.register_button}`]: true,
+		"my-5": true,
+	});
 	return (
-		<div className="full-height reg-page">
-			<Col sm={3} className="center">
-				<Form onSubmit={submitHandler} className="register-form">
-					<h2 className="register-form-heading text-center py-1">Log In</h2>
-					<Form.Group
-						controlId="formBasicUsername"
-						bsPrefix="form-group register-form-group"
-					>
-						<Form.Label>Email</Form.Label>
-						<Form.Control
-							bsPrefix="form-control register-form-control"
-							type="text"
-							name="email"
-							autoComplete="off"
-							onChange={updateField}
-							value={login.email}
-						/>
-					</Form.Group>
-					<Form.Group
-						controlId="formBasicPassword"
-						bsPrefix="form-group register-form-group"
-					>
-						<Form.Label>Password</Form.Label>
-						<Form.Control
-							bsPrefix="form-control register-form-control"
-							type="password"
-							name="password"
-							autoComplete="off"
-							onChange={updateField}
-							value={login.password}
-						/>
-					</Form.Group>
-					<Button
-						variant="outline-secondary button register-button"
-						type="submit"
-						size="lg"
-					>
-						Log In
-					</Button>
-				</Form>
-			</Col>
-		</div>
+		<form onSubmit={submitHandler} className={formStyles}>
+			<h2 className={styles.form_heading}>Sign In</h2>
+			<div className={styles.input_group}>
+				<label htmlFor="email-login" className={styles.form_label}>
+					Email
+				</label>
+				<input
+					id="email-login"
+					type="text"
+					name="email"
+					autoComplete="off"
+					onChange={updateField}
+					value={login.email}
+					className={styles.input}
+				/>
+			</div>
+			<div className={styles.input_group}>
+				<label htmlFor="password-login" className={styles.form_label}>
+					Password
+				</label>
+				<input
+					id="password-login"
+					className={styles.input}
+					type="password"
+					name="password"
+					autoComplete="off"
+					onChange={updateField}
+					value={login.password}
+				/>
+			</div>
+			<button className={loginButton} type="submit">
+				Log In
+			</button>
+		</form>
 	);
 };
 

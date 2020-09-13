@@ -1,0 +1,93 @@
+@import "./variables";
+.display {
+	position: relative;
+	padding: 0;
+	overflow: hidden;
+	background-color: #3b3e52;
+	border-radius: 25px;
+	-webkit-box-shadow: 0px 0px 25px 23px rgba(0, 0, 0, 0.33);
+	-moz-box-shadow: 0px 0px 25px 23px rgba(0, 0, 0, 0.33);
+	box-shadow: 0px 0px 25px 23px rgba(0, 0, 0, 0.33);
+}
+
+.divOne {
+	position: relative;
+	padding: 0;
+	top: 0;
+	left: 0;
+	height: 80vh;
+	width: 100%;
+	background-color: #000852;
+	transition: transform 200ms linear;
+}
+.divTwo {
+	height: 80vh;
+	width: 100%;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: transform 200ms linear;
+}
+.button {
+	position: absolute;
+	color: white;
+	font-weight: 500;
+	font-size: 25px;
+	bottom: 5%;
+	height: 70px;
+	width: 45%;
+	border: 0;
+	&:focus {
+		outline: 0;
+	}
+}
+.login {
+	background-color: $myOrange;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	transition: right 300ms ease-in;
+	transition-delay: 200ms;
+	right: -100%;
+}
+
+.login_show {
+	right: 0;
+}
+.signup {
+	background-color: $dark-black;
+	left: 0;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	transition: left 300ms ease-in;
+	transition-delay: 200ms;
+	left: -100%;
+}
+.signup_show {
+	left: 0;
+}
+.close_divTwo {
+	transform: rotateZ(35deg) translate(75%, -16%);
+	position: absolute;
+	// z-index: 3;
+}
+.open_divTwo {
+	transform: rotate(0deg);
+	opacity: 1;
+}
+
+.open_divOne {
+	transform: rotateZ(-35deg) translate(-75%, -16%);
+}
+.form_inactive {
+	z-index: 2;
+}
+.form_active {
+	z-index: 3;
+}
+.blue {
+	background-color: $myOrange;
+}
+.black {
+	background-color: #000852;
+}

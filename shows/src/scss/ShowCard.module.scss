@@ -1,12 +1,14 @@
-.card-body {
+@import "./variables";
+.card_body {
 	background-color: $primary-green;
 	color: $myWhite;
+	padding: 20px 0;
 	// transition: padding-bottom 0.2s linear;
 }
-.button-holder {
+.button_holder {
 	position: relative;
 }
-.favorites-button {
+.favorites_button {
 	display: block;
 	margin: 0 auto;
 	border: none;
@@ -21,17 +23,25 @@
 	}
 }
 
-.card-subtitle {
+.card_subtitle {
 	font-size: 1.2rem;
 }
-.favorites-button:hover {
+.favorites_button:hover {
 	font-size: 2rem;
 }
-
 .card {
-	border: none;
-	transition: padding 200ms linear;
+	position: relative;
 }
-.card:hover {
-	padding: 2px;
+.cardImg::after {
+	content: "";
+	background-color: $myWhite;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	opacity: 0;
+}
+.cardImg:hover::after {
+	opacity: 0.05;
 }

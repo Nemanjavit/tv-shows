@@ -1,0 +1,98 @@
+@import "./variables";
+
+.register_form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+	padding: 0 30px;
+	border: none;
+	background-color: $dark-black;
+}
+.orange {
+	background-color: $myOrange;
+}
+.link {
+	display: block;
+	margin: 10px 0;
+}
+
+.link:hover {
+	color: #007bff;
+}
+
+.form_heading {
+	text-align: center;
+	color: $light-green;
+}
+
+.form_label {
+	color: $myWhite;
+}
+
+.input {
+	background-color: transparent;
+	border: none;
+	color: $myWhite;
+	border-radius: 0;
+	border-bottom: 1px solid $myWhite;
+}
+
+.input:focus {
+	color: $myWhite;
+	border: none;
+	background-color: unset;
+	box-shadow: none;
+	border-bottom: 2px solid $light-green;
+	outline: none;
+}
+
+.input_group {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	position: relative;
+}
+
+.input_group {
+	transition: transform 200ms ease-in;
+}
+.input_group:focus-within {
+	transform: scale(0.95);
+}
+
+.input_group::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 2px;
+	background: $light-green;
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform 500ms ease-in;
+}
+
+.input_group:hover::after {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+.register_button {
+	display: block;
+	height: 50px;
+	margin: 0 auto;
+	border: none;
+	border-radius: 30px;
+	width: 45%;
+	background-color: $secondary-green;
+	font-weight: bold;
+	color: $myWhite;
+	&:focus {
+		outline: none;
+	}
+}
+.register_button:hover {
+	background-color: $light-green;
+}
