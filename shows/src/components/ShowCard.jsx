@@ -8,7 +8,6 @@ import classNames from "classnames";
 import styles from "../scss/ShowCard.module.scss";
 
 const ShowCard = ({ data, setFavoriteHandler }) => {
-	const heart = <FontAwesomeIcon icon={faHeart} />;
 	const star = <FontAwesomeIcon icon={faStar} />;
 
 	return (
@@ -26,12 +25,19 @@ const ShowCard = ({ data, setFavoriteHandler }) => {
 					<div className={`${styles.card_body}`}>
 						<Card.Title className="text-center">{data.name}</Card.Title>
 						<Row className={`${styles.card_subtitle}`}>
-							<Col sm={6} className={`${styles.button_holder}`}>
+							<Col sm={6} className="d-flex justify-content-center">
 								<button
 									className={`${styles.favorites_button}`}
 									onClick={setFavoriteHandler}
 								>
-									{heart}
+									<FontAwesomeIcon
+										icon={faHeart}
+										className={styles.heartFront}
+									/>
+									<FontAwesomeIcon
+										icon={faHeart}
+										className={styles.heartBehind}
+									/>
 								</button>
 							</Col>
 							<Col sm={6}>

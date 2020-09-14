@@ -25,38 +25,36 @@ const Episodes = () => {
 	return (
 		<>
 			<Container>
-				<Scrollbars style={{ width: "100%", height: "90vh" }}>
-					{seasons &&
-						[...Array(seasons.length)].map((e, i) => {
-							return (
-								<div key={i}>
-									<h3 className="text-left">Seasons {i + 1}</h3>
-									<Table striped bordered hover key={i}>
-										<thead className={`${styles.table_header}`}>
-											<tr>
-												<th>Episode number</th>
-												<th>Date</th>
-												<th>Name</th>
-											</tr>
-										</thead>
-										<tbody>
-											{episodes.map((episode) => {
-												if (episode.season === i + 1) {
-													return (
-														<tr key={episode.id}>
-															<td>{episode.number}</td>
-															<td>{episode.airdate}</td>
-															<td>{episode.name}</td>
-														</tr>
-													);
-												}
-											})}
-										</tbody>
-									</Table>
-								</div>
-							);
-						})}
-				</Scrollbars>
+				{seasons &&
+					[...Array(seasons.length)].map((e, i) => {
+						return (
+							<div key={i}>
+								<h3 className="text-left">Seasons {i + 1}</h3>
+								<Table striped bordered hover key={i}>
+									<thead className={`${styles.table_header}`}>
+										<tr>
+											<th>Episode number</th>
+											<th>Date</th>
+											<th>Name</th>
+										</tr>
+									</thead>
+									<tbody>
+										{episodes.map((episode) => {
+											if (episode.season === i + 1) {
+												return (
+													<tr key={episode.id}>
+														<td>{episode.number}</td>
+														<td>{episode.airdate}</td>
+														<td>{episode.name}</td>
+													</tr>
+												);
+											}
+										})}
+									</tbody>
+								</Table>
+							</div>
+						);
+					})}
 			</Container>
 		</>
 	);

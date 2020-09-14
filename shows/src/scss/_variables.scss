@@ -12,13 +12,9 @@ $myBlue: #0779e4;
 $myOrange: #e36414;
 $carolineBlue: #009ffd;
 
-// background
-$background-red: (
-	rgb(215, 117, 132)
-		linear-gradient(
-			157deg,
-			rgba(215, 117, 132, 1) 36%,
-			rgba(162, 75, 97, 1) 65%
-		)
-);
-//  #009FFD
+// font
+
+@font-face {
+	font-family: "Roboto";
+	src: url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+}

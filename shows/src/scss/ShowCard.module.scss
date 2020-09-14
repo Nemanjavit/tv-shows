@@ -1,34 +1,53 @@
 @import "./variables";
+
 .card_body {
 	background-color: $primary-green;
 	color: $myWhite;
 	padding: 20px 0;
-	// transition: padding-bottom 0.2s linear;
 }
-.button_holder {
-	position: relative;
+.card_subtitle {
+	display: flex;
+	align-items: center;
+	font-size: 1.2rem;
 }
+
 .favorites_button {
-	display: block;
-	margin: 0 auto;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	border: none;
-	background-color: $primary-green;
+	background-color: transparent;
 	color: $myWhite;
 	width: 30%;
-	transition: font-size 0.3s linear;
-	svg {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
+	height: 50px;
+}
+.heartFront {
+	position: absolute;
+	z-index: 4;
+}
+.heartBehind {
+	color: white;
+	position: absolute;
+	z-index: 3;
+}
+.heartFront:hover ~ .heartBehind {
+	position: absolute;
+	animation: pulse 700ms infinite;
+}
+
+// pulse animation
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+		opacity: 0.95;
+	}
+	100% {
+		transform: scale(2);
+		opacity: 0.1;
 	}
 }
 
-.card_subtitle {
-	font-size: 1.2rem;
-}
-.favorites_button:hover {
-	font-size: 2rem;
-}
 .card {
 	position: relative;
 }

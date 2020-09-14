@@ -72,11 +72,9 @@ const ShowsPage = () => {
 	};
 
 	return (
-		<Scrollbars style={{ width: "100%", height: "95vh" }}>
-			<Container>
-				<Row>{displayShows()}</Row>
-			</Container>
-		</Scrollbars>
+		<Container>
+			<Row>{displayShows()}</Row>
+		</Container>
 	);
 };
 
