@@ -15,6 +15,9 @@ const Home = () => {
 	const openRegister = () => {
 		setisOpenLogin(false);
 	};
+	const registerSuccess = () => {
+		setisOpenLogin(true);
+	};
 
 	// Register form styles
 	const signinClasses = classNames({
@@ -47,9 +50,7 @@ const Home = () => {
 		[`${styles.signup}`]: true,
 		[`${styles.signup_show}`]: isOpenLogin,
 	});
-	const registerSuccess = () => {
-		setisOpenLogin(true);
-	};
+
 	return (
 		<div className="home" style={{ backgroundColor: "#009FFD" }}>
 			<Container>

@@ -373,6 +373,13 @@
       "username": "sadsad",
       "shows": [],
       "id": 5
+    },
+    {
+      "email": "asdsad@sa",
+      "password": "$2a$10$U6ShQlrDmm8x.A7JeTBStOuzY11zUmmzwaXTYyoE3Wf3T7YUyD0rK",
+      "username": "sad",
+      "shows": [],
+      "id": 6
     }
   ]
 }

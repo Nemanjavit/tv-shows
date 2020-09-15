@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import { registerUser } from "./http-requestes";
 import classNames from "classnames";
 import styles from "../scss/Register.module.scss";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Register = (props, handleSucces) => {
+const Register = ({ handleSucces }) => {
+	const [showAlert, setShowAlert] = useState(false);
 	const [user, setUser] = useState({
 		email: "",
 		password: "",
 		username: "",
 		shows: [],
 	});
-	const [showalert, setShowalert] = useState(false);
 
 	const updateField = (e) => {
 		setUser({
@@ -19,15 +21,12 @@ const Register = (props, handleSucces) => {
 		});
 	};
 
-	const errorHandler = () => {
-		return <p className="text-white">Registration failed!</p>;
-	};
 	const submitHandler = (e) => {
 		e.preventDefault();
 		// opening log in form if register is success
 		registerUser(user)
 			.then((res) => {
-				props.handleSucces();
+				handleSucces();
 				// clearing fields
 				setUser({
 					email: "",
@@ -36,8 +35,7 @@ const Register = (props, handleSucces) => {
 				});
 			})
 			.catch((err) => {
-				setShowalert(true);
-				console.log(err, "this is error log");
+				setShowAlert(true);
 			});
 	};
 
@@ -46,10 +44,24 @@ const Register = (props, handleSucces) => {
 		"my-5": true,
 		[`${styles.register_button}`]: true,
 	});
+	const warningStyles = classNames({
+		"d-none": !showAlert,
+		[`${styles.warning}`]: true,
+	});
+
 	return (
 		<>
 			<form onSubmit={submitHandler} className={styles.register_form}>
-				{showalert ? errorHandler() : null}
+				<div className={warningStyles}>
+					<FontAwesomeIcon
+						icon={faExclamationTriangle}
+						className={styles.triangle}
+					/>
+					<p className="text-danger text-center py-2">
+						You failed to register, try using different username and make sure
+						email is valid
+					</p>
+				</div>
 				<h2 className={styles.form_heading}>Sign Up</h2>
 				<div className={styles.input_group}>
 					<label htmlFor="username" className={styles.form_label}>
