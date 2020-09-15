@@ -4,14 +4,12 @@ import {
 	searchShows,
 	patchUser,
 	getUserInfo,
-	getShowsPaginated,
 } from "./http-requestes";
 import ShowCard from "./ShowCard";
 import { Container, Row } from "react-bootstrap";
 import { SearchContext } from "./helper/SearchContext";
 import { Col } from "react-bootstrap";
 import { userId } from "./helper/getToken";
-import { Scrollbars } from "react-custom-scrollbars";
 
 const ShowsPage = () => {
 	const [shows, setShows] = useState([]);

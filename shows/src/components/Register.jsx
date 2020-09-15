@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { registerUser } from "./http-requestes";
-import { Alert } from "react-bootstrap";
 import classNames from "classnames";
 import styles from "../scss/Register.module.scss";
 

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import classNames from "classnames";
 import styles from "../scss/ShowCard.module.scss";
 
 const ShowCard = ({ data, setFavoriteHandler }) => {
@@ -16,9 +15,13 @@ const ShowCard = ({ data, setFavoriteHandler }) => {
 				<Card style={{ width: "100%" }} className={`${styles.card}`}>
 					<div className={`${styles.cardImg}`}>
 						{data.image ? (
-							<img className="w-100" src={data.image.medium} />
+							<img className="w-100" alt="cover" src={data.image.medium} />
 						) : (
-							<img className="w-100" src="https://dummyimage.com/348x488" />
+							<img
+								className="w-100"
+								alt="cover"
+								src="https://dummyimage.com/348x488"
+							/>
 						)}
 					</div>
 

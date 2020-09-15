@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Switch, Route, Router } from "react-router-dom";
 import { useRouteMatch, NavLink } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import classNames from "classnames";
@@ -15,7 +14,7 @@ const SingleShow = () => {
 	const subnavStyles = classNames({
 		[`${styles.sub_nav}`]: true,
 	});
-	console.log(styles.sub_nav);
+
 	return (
 		<>
 			<Container>
@@ -31,9 +30,9 @@ const SingleShow = () => {
 					</NavLink>
 				</div>
 			</Container>
-			<Route path={`${path}/main`} component={MainInfo} />
-			<Route path={`${path}/episodes`} component={Episodes} />
-			<Route path={`${path}/cast`} component={Cast} />
+			<ProtectedRoute path={`${path}/main`} component={MainInfo} />
+			<ProtectedRoute path={`${path}/episodes`} component={Episodes} />
+			<ProtectedRoute path={`${path}/cast`} component={Cast} />
 		</>
 	);
 };

@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Navbar, Nav, Container, FormControl } from "react-bootstrap";
 import { getToken } from "./helper/getToken";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import { SearchContext } from "./helper/SearchContext";
@@ -8,7 +7,6 @@ import classNames from "classnames";
 
 const Navigation = () => {
 	const { query, setQuery } = useContext(SearchContext);
-	const [search, setSearch] = useState("");
 	const [token, setToken] = useState("");
 
 	let location = useLocation();
