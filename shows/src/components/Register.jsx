@@ -27,6 +27,7 @@ const Register = ({ handleSucces }) => {
 		registerUser(user)
 			.then((res) => {
 				handleSucces();
+				setShowAlert(false);
 				// clearing fields
 				setUser({
 					email: "",

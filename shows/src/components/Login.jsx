@@ -25,6 +25,7 @@ const Login = () => {
 			.then((res) => {
 				console.log(res);
 				localStorage.setItem("token", res.data.accessToken);
+				setShowAlert(false);
 				history.push("/shows");
 			})
 			.catch((err) => {

@@ -1,13 +1,14 @@
 import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 import styles from "../scss/ShowCard.module.scss";
 
-const ShowCard = ({ data, setFavoriteHandler }) => {
+const ShowCard = ({ data, setFavoriteHandler, removeFavoriteHandler }) => {
 	const star = <FontAwesomeIcon icon={faStar} />;
+	let location = useLocation();
 
 	return (
 		<>
@@ -29,19 +30,35 @@ const ShowCard = ({ data, setFavoriteHandler }) => {
 						<Card.Title className="text-center">{data.name}</Card.Title>
 						<Row className={`${styles.card_subtitle}`}>
 							<Col sm={6} className="d-flex justify-content-center">
-								<button
-									className={`${styles.favorites_button}`}
-									onClick={setFavoriteHandler}
-								>
-									<FontAwesomeIcon
-										icon={faHeart}
-										className={styles.heartFront}
-									/>
-									<FontAwesomeIcon
-										icon={faHeart}
-										className={styles.heartBehind}
-									/>
-								</button>
+								{location.pathname === "/favorites" ? (
+									<button
+										onClick={removeFavoriteHandler}
+										className={`${styles.favorites_button}`}
+									>
+										<FontAwesomeIcon
+											icon={faHeartBroken}
+											className={styles.heartFront}
+										/>
+										<FontAwesomeIcon
+											icon={faHeartBroken}
+											className={styles.heartBehind}
+										/>
+									</button>
+								) : (
+									<button
+										className={`${styles.favorites_button}`}
+										onClick={setFavoriteHandler}
+									>
+										<FontAwesomeIcon
+											icon={faHeart}
+											className={styles.heartFront}
+										/>
+										<FontAwesomeIcon
+											icon={faHeart}
+											className={styles.heartBehind}
+										/>
+									</button>
+								)}
 							</Col>
 							<Col sm={6}>
 								<div className="rating text-center">

@@ -21,6 +21,9 @@
 	color: $myWhite;
 	width: 30%;
 	height: 50px;
+	&:focus {
+		outline: none;
+	}
 }
 .heartFront {
 	position: absolute;

@@ -47,7 +47,7 @@ const ShowsPage = () => {
 			console.log(res.data);
 		});
 	};
-	console.log(searchedShow);
+
 	const displayShows = () => {
 		if (searchedShow.length > 0) {
 			return searchedShow.map((show) => (
