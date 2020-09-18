@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import {
 	getShows,
 	searchShows,
@@ -6,30 +6,39 @@ import {
 	getUserInfo,
 } from "./http-requestes";
 import ShowCard from "./ShowCard";
-import { Container, Row } from "react-bootstrap";
-import { SearchContext } from "./helper/SearchContext";
-import { Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { userId } from "./helper/getToken";
+import useDebounce from "./helper/useDebounce";
 
-const ShowsPage = () => {
+const ShowsPage = ({ query }) => {
 	const [shows, setShows] = useState([]);
 	const [searchedShow, setSearchedShow] = useState([]);
 	const [prevfavorites, setPrevFavorites] = useState([]);
-	const { query, setQuery } = useContext(SearchContext);
+	const debouncedSearchShows = useDebounce(query);
+	console.log(debouncedSearchShows);
 	const myId = userId();
 
 	useEffect(() => {
 		getShows().then((res) => {
-			console.log(res);
-			setShows(res.data);
+			let newArr = [];
+			newArr = res.data;
+			newArr.length = 20;
+			setShows(newArr);
 		});
-		searchShows(query).then((res) => {
-			setSearchedShow(res.data);
-		});
+
 		getUserInfo(myId).then((res) => {
 			setPrevFavorites(res.data.shows);
 		});
-	}, [query]);
+	}, []);
+	useEffect(() => {
+		if (debouncedSearchShows) {
+			searchShows(debouncedSearchShows).then((res) => {
+				setSearchedShow(res.data);
+			});
+		} else {
+			setSearchedShow([]);
+		}
+	}, [debouncedSearchShows]);
 
 	const setFavoriteHandler = (show, e) => {
 		e.stopPropagation();

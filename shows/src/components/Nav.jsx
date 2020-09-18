@@ -1,16 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import { getToken } from "./helper/getToken";
 import { Link, useLocation, useHistory } from "react-router-dom";
-import { SearchContext } from "./helper/SearchContext";
 import styles from "../scss/Nav.module.scss";
 import classNames from "classnames";
 
-const Navigation = () => {
-	const { query, setQuery } = useContext(SearchContext);
+const Navigation = ({ search, value }) => {
 	const [token, setToken] = useState("");
-
 	let location = useLocation();
-	let history = useHistory();
 
 	useEffect(() => {
 		const tokenString = getToken();
@@ -18,11 +14,6 @@ const Navigation = () => {
 			setToken(tokenString);
 		}
 	}, [location.pathname]);
-
-	const inputChange = (e) => {
-		setQuery(e.target.value);
-		history.push("/shows");
-	};
 
 	const logOut = () => {
 		localStorage.removeItem("token");
@@ -53,15 +44,12 @@ const Navigation = () => {
 							name="search"
 							placeholder="Search"
 							className={searchfldClasses}
-							value={query}
-							onChange={inputChange}
+							value={value}
+							onChange={search}
+							autoComplete="off"
 						/>
 
-						<Link
-							onClick={(e) => setQuery("")}
-							className={linkStyles}
-							to="/shows"
-						>
+						<Link className={linkStyles} to="/shows">
 							Shows
 						</Link>
 
