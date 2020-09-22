@@ -12,13 +12,25 @@ import { Scrollbars } from "react-custom-scrollbars";
 
 function App() {
 	const [query, setSearchShows] = useState("");
+	const [numberOfSHows, setnumberOfSHows] = useState(20);
 
 	const onSearchShows = (e) => {
 		setSearchShows(e.target.value);
 	};
 
+	const handleScrollFrame = (e) => {
+		let scrollAt = Math.trunc(e.top * 100);
+		if (scrollAt === 90) {
+			setnumberOfSHows(numberOfSHows + 6);
+			console.log(numberOfSHows);
+		}
+	};
 	return (
-		<Scrollbars autoHide style={{ height: "100vh" }}>
+		<Scrollbars
+			autoHide
+			style={{ height: "100vh" }}
+			onScrollFrame={handleScrollFrame}
+		>
 			<div className="App">
 				<Router>
 					<Navigation value={query} search={onSearchShows} />
@@ -30,6 +42,7 @@ function App() {
 							setSearchShows={setSearchShows}
 							component={ShowsPage}
 							query={query}
+							numberOfSHows={numberOfSHows}
 						/>
 						<ProtectedRoute path="/shows/:id" component={SingleShow} />
 						<ProtectedRoute path="/favorites" component={FavoritesPage} />

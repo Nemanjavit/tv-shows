@@ -1,3 +1,4 @@
+@import "./variables";
 .cover_img {
 	width: 100%;
 }
@@ -8,6 +9,8 @@
 
 .summary {
 	text-align: justify;
+	color: grey;
+	@include sm-font;
 }
 
 .show_info_text {

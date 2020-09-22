@@ -19,3 +19,10 @@ a:hover {
 	background-color: $light-black;
 	color: $myWhite;
 }
+
+.card_heading {
+	@include lg-font;
+}
+.main_info_heading {
+	@include xl-font;
+}

@@ -13,8 +13,20 @@ $myOrange: #e36414;
 $carolineBlue: #009ffd;
 
 // font
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&display=swap");
 
-@font-face {
-	font-family: "Roboto";
-	src: url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+@mixin lg-font {
+	font-size: 1.5rem;
+	font-family: "Oswald", sans-serif;
+	font-weight: 400;
+}
+@mixin xl-font {
+	font-size: 3.5rem;
+	font-family: "Oswald", sans-serif;
+	font-weight: 700;
+}
+@mixin sm-font {
+	font-size: 1.1rem;
+	font-family: "Oswald", sans-serif;
+	font-weight: 400;
 }

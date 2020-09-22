@@ -5,10 +5,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { faHeart, faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 import styles from "../scss/ShowCard.module.scss";
+import classNames from "classnames";
 
 const ShowCard = ({ data, setFavoriteHandler, removeFavoriteHandler }) => {
 	const star = <FontAwesomeIcon icon={faStar} />;
 	let location = useLocation();
+
+	const cardHeadingStyles = classNames({
+		"text-center": true,
+		card_heading: true,
+	});
 
 	return (
 		<>
@@ -27,7 +33,7 @@ const ShowCard = ({ data, setFavoriteHandler, removeFavoriteHandler }) => {
 					</div>
 
 					<div className={`${styles.card_body}`}>
-						<Card.Title className="text-center">{data.name}</Card.Title>
+						<Card.Title className={cardHeadingStyles}>{data.name}</Card.Title>
 						<Row className={`${styles.card_subtitle}`}>
 							<Col sm={6} className="d-flex justify-content-center">
 								{location.pathname === "/favorites" ? (

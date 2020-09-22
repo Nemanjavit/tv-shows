@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { getToken } from "./helper/getToken";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "../scss/Nav.module.scss";
 import classNames from "classnames";
 
@@ -34,9 +34,9 @@ const Navigation = ({ search, value }) => {
 		<header className={headerClasses}>
 			<div className="container">
 				<nav className={navClasses}>
-					<a href="/" className="text-white">
+					<Link to="/" className="text-white">
 						TV-Shows
-					</a>
+					</Link>
 
 					<div className={styles.navigation} id="basic-navbar-nav">
 						<input

@@ -9,7 +9,6 @@ const Episodes = () => {
 	const [seasons, setSeasons] = useState([]);
 	let params = useParams();
 	let location = useLocation();
-	console.log(`episode params: ${params.id}`);
 
 	useEffect(() => {
 		getEpisodes(params.id).then((res) => {

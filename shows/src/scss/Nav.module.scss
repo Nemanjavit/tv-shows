@@ -7,6 +7,7 @@
 	justify-content: space-between;
 	padding: 10px 0;
 	align-items: baseline;
+	@include sm-font;
 }
 .search_field {
 	border-radius: 5px;
@@ -17,9 +18,6 @@
 		outline: none;
 	}
 }
-// .navigation {
-// 	width: 80%;
-// }
 
 .navbar {
 	align-items: baseline;
@@ -27,6 +25,7 @@
 .link {
 	color: white;
 	white-space: nowrap;
+
 	&:hover {
 		color: $myWhite;
 	}

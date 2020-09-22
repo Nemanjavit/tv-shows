@@ -10,19 +10,18 @@ import { Container, Row, Col } from "react-bootstrap";
 import { userId } from "./helper/getToken";
 import useDebounce from "./helper/useDebounce";
 
-const ShowsPage = ({ query }) => {
+const ShowsPage = ({ query, numberOfSHows }) => {
 	const [shows, setShows] = useState([]);
 	const [searchedShow, setSearchedShow] = useState([]);
 	const [prevfavorites, setPrevFavorites] = useState([]);
 	const debouncedSearchShows = useDebounce(query);
-	console.log(debouncedSearchShows);
+
 	const myId = userId();
 
 	useEffect(() => {
 		getShows().then((res) => {
 			let newArr = [];
 			newArr = res.data;
-			newArr.length = 20;
 			setShows(newArr);
 		});
 
@@ -58,6 +57,8 @@ const ShowsPage = ({ query }) => {
 	};
 
 	const displayShows = () => {
+		const showsForDisplay = shows.filter((show) => show.id < numberOfSHows);
+
 		if (searchedShow.length > 0) {
 			return searchedShow.map((show) => (
 				<Col sm={4} className="my-2 " key={show.show.id}>
@@ -68,7 +69,7 @@ const ShowsPage = ({ query }) => {
 				</Col>
 			));
 		}
-		return shows.map((show) => (
+		return showsForDisplay.map((show) => (
 			<Col sm={4} className="my-2" key={show.id}>
 				<ShowCard
 					setFavoriteHandler={(e) => setFavoriteHandler(show, e)}

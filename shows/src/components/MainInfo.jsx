@@ -41,7 +41,7 @@ const MainInfo = () => {
 					<img src={show.image.original} alt="" className={coverImg} />
 				</Col>
 				<Col sm={12} md={6}>
-					<h2 className=" mb-5 text-center">{show.name}</h2>
+					<h2 className=" mb-5 text-center main_info_heading">{show.name}</h2>
 					<Col className="text-center" sm={12}>
 						{show.genres.map((genre) => (
 							<Badge key={uuidv4()} variant="dark mx-1 genres">
